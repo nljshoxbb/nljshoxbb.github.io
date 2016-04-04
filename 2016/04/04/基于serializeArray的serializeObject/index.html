@@ -41,7 +41,7 @@
 <link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="图,tag2,tag3," />
+  <meta name="keywords" content="jQuery," />
 
 
 
@@ -57,16 +57,34 @@
 
 
 
-<meta name="description" content="##随便说说##&amp;lt;div style=&amp;quot;color: red&amp;quot;&amp;gt;呵呵哒&amp;lt;/div&amp;gt;">
+<meta name="description" content="//work with jQuery Compact 3.x  
+jQuery.prototype.serializeObject=function(){  
+    var a,o,h,i,e;  
+    a=this.serializeArray();  
+    o={};  
+    h=o.hasOwnProperty;  
+    for(i=0;i&amp;lt;a.length;i++)">
 <meta property="og:type" content="article">
-<meta property="og:title" content="新的开始">
-<meta property="og:url" content="http://yoursite.com/2016/03/27/新的开始/index.html">
+<meta property="og:title" content="基于serializeArray的serializeObject">
+<meta property="og:url" content="http://yoursite.com/2016/04/04/基于serializeArray的serializeObject/index.html">
 <meta property="og:site_name" content="随遇而安">
-<meta property="og:description" content="##随便说说##&amp;lt;div style=&amp;quot;color: red&amp;quot;&amp;gt;呵呵哒&amp;lt;/div&amp;gt;">
-<meta property="og:updated_time" content="2016-03-27T08:08:46.463Z">
+<meta property="og:description" content="//work with jQuery Compact 3.x  
+jQuery.prototype.serializeObject=function(){  
+    var a,o,h,i,e;  
+    a=this.serializeArray();  
+    o={};  
+    h=o.hasOwnProperty;  
+    for(i=0;i&amp;lt;a.length;i++)">
+<meta property="og:updated_time" content="2016-04-04T15:53:25.406Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="新的开始">
-<meta name="twitter:description" content="##随便说说##&amp;lt;div style=&amp;quot;color: red&amp;quot;&amp;gt;呵呵哒&amp;lt;/div&amp;gt;">
+<meta name="twitter:title" content="基于serializeArray的serializeObject">
+<meta name="twitter:description" content="//work with jQuery Compact 3.x  
+jQuery.prototype.serializeObject=function(){  
+    var a,o,h,i,e;  
+    a=this.serializeArray();  
+    o={};  
+    h=o.hasOwnProperty;  
+    for(i=0;i&amp;lt;a.length;i++)">
 
 
 
@@ -84,7 +102,7 @@
   };
 </script>
 
-  <title> 新的开始 | 随遇而安 </title>
+  <title> 基于serializeArray的serializeObject | 随遇而安 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -214,7 +232,7 @@
             
             
               
-                新的开始
+                基于serializeArray的serializeObject
               
             
           </h1>
@@ -226,62 +244,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-27T15:29:02+08:00" content="2016-03-27">
-              2016-03-27
+            <time itemprop="dateCreated" datetime="2016-04-04T23:29:59+08:00" content="2016-04-04">
+              2016-04-04
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/图/" itemprop="url" rel="index">
-                    <span itemprop="name">图</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/图/cat2/" itemprop="url" rel="index">
-                    <span itemprop="name">cat2</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/图/cat2/cat3/" itemprop="url" rel="index">
-                    <span itemprop="name">cat3</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/03/27/新的开始/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/27/新的开始/" itemprop="commentsCount"></span>
+                <a href="/2016/04/04/基于serializeArray的serializeObject/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/04/基于serializeArray的serializeObject/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -303,7 +278,20 @@
       
 
       
-        <p>##随便说说##<br><code>&lt;div style=&quot;color: red&quot;&gt;呵呵哒&lt;/div&gt;</code></p>
+        <p><code>//work with jQuery Compact 3.x  
+jQuery.prototype.serializeObject=function(){  
+    var a,o,h,i,e;  
+    a=this.serializeArray();  
+    o={};  
+    h=o.hasOwnProperty;  
+    for(i=0;i&lt;a.length;i++){  
+        e=a[i];  
+        if(!h.call(o,e.name)){  
+            o[e.name]=e.value;  
+        }  
+    }  
+    return o;  
+};</code></p>
 
       
     </div>
@@ -318,11 +306,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/图/" rel="tag">#图</a>
-          
-            <a href="/tags/tag2/" rel="tag">#tag2</a>
-          
-            <a href="/tags/tag3/" rel="tag">#tag3</a>
+            <a href="/tags/jQuery/" rel="tag">#jQuery</a>
           
         </div>
       
@@ -331,13 +315,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/04/03/hexo搭建的坑/" rel="next" title="hexo搭建的坑">
+                <i class="fa fa-chevron-left"></i> hexo搭建的坑
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/04/03/hexo搭建的坑/" rel="prev" title="hexo搭建的坑">
-                hexo搭建的坑 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -363,8 +347,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/03/27/新的开始/"
-           data-title="新的开始" data-url="http://yoursite.com/2016/03/27/新的开始/">
+      <div class="ds-thread" data-thread-key="2016/04/04/基于serializeArray的serializeObject/"
+           data-title="基于serializeArray的serializeObject" data-url="http://yoursite.com/2016/04/04/基于serializeArray的serializeObject/">
       </div>
     
   </div>
