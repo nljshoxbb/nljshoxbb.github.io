@@ -217,7 +217,7 @@
               
                 
                 <a class="post-title-link" href="/2016/04/04/基于serializeArray的serializeObject/" itemprop="url">
-                  基于serializeArray的serializeObject
+                  未命名
                 </a>
               
             
@@ -266,20 +266,7 @@
       
         
           
-            <p><code>//work with jQuery Compact 3.x  
-jQuery.prototype.serializeObject=function(){  
-    var a,o,h,i,e;  
-    a=this.serializeArray();  
-    o={};  
-    h=o.hasOwnProperty;  
-    for(i=0;i&lt;a.length;i++){  
-        e=a[i];  
-        if(!h.call(o,e.name)){  
-            o[e.name]=e.value;  
-        }  
-    }  
-    return o;  
-};</code></p>
+            <p><code><br>jQuery.prototype.serializeObject=function(){<br>    var a,o,h,i,e;<br>    a=this.serializeArray();<br>    o={};<br>    h=o.hasOwnProperty;<br>    for(i=0;i<a.length;i++){ e="a[i];" if(!h.call(o,e.name)){="" o[e.name]="e.value;" }="" return="" o;="" };="" <="" code=""></a.length;i++){></code></p>
 
           
         
