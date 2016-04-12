@@ -64,7 +64,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="node.js,转载," />
 
 
 
@@ -80,15 +80,19 @@
 
 
 
-<meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="随遇而安">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="description" content="eventproxy控制并发要并发异步获取两三个地址的数据，并且要在获取到数据之后，对这些数据一起进行利用的话，常规的写法是自己维护一个计数器。
+先定义一个 count = 0```，然后每次抓取成功以后，就 ```count++```如果你是要抓取三个源的数据，由于你根本不知道这些异步操作到底谁先完成，那么每次当抓取成功的时候，就判断一下 ```count === 3``` 当值为真时，使用另一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="eventproxy控制并发">
+<meta property="og:url" content="http://yoursite.com/2016/04/12/eventproxy控制并发/index.html">
 <meta property="og:site_name" content="随遇而安">
-<meta property="og:description">
+<meta property="og:description" content="eventproxy控制并发要并发异步获取两三个地址的数据，并且要在获取到数据之后，对这些数据一起进行利用的话，常规的写法是自己维护一个计数器。
+先定义一个 count = 0```，然后每次抓取成功以后，就 ```count++```如果你是要抓取三个源的数据，由于你根本不知道这些异步操作到底谁先完成，那么每次当抓取成功的时候，就判断一下 ```count === 3``` 当值为真时，使用另一">
+<meta property="og:updated_time" content="2016-04-12T02:00:16.690Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="随遇而安">
-<meta name="twitter:description">
+<meta name="twitter:title" content="eventproxy控制并发">
+<meta name="twitter:description" content="eventproxy控制并发要并发异步获取两三个地址的数据，并且要在获取到数据之后，对这些数据一起进行利用的话，常规的写法是自己维护一个计数器。
+先定义一个 count = 0```，然后每次抓取成功以后，就 ```count++```如果你是要抓取三个源的数据，由于你根本不知道这些异步操作到底谁先完成，那么每次当抓取成功的时候，就判断一下 ```count === 3``` 当值为真时，使用另一">
 
 
 
@@ -106,7 +110,7 @@
   };
 </script>
 
-  <title> 随遇而安 </title>
+  <title> eventproxy控制并发 | 随遇而安 </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -127,9 +131,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -206,9 +208,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -228,10 +230,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/04/12/eventproxy控制并发/" itemprop="url">
-                  eventproxy控制并发
-                </a>
+                eventproxy控制并发
               
             
           </h1>
@@ -278,9 +277,7 @@
       
 
       
-        
-          
-            <h2 id="eventproxy控制并发"><a href="#eventproxy控制并发" class="headerlink" title="eventproxy控制并发"></a>eventproxy控制并发</h2><p>要并发异步获取两三个地址的数据，并且要在获取到数据之后，对这些数据一起进行利用的话，常规的写法是自己维护一个计数器。</p>
+        <h2 id="eventproxy控制并发"><a href="#eventproxy控制并发" class="headerlink" title="eventproxy控制并发"></a>eventproxy控制并发</h2><p>要并发异步获取两三个地址的数据，并且要在获取到数据之后，对这些数据一起进行利用的话，常规的写法是自己维护一个计数器。</p>
 <p>先定义一个 <figure class="highlight plain"><figcaption><span>count = 0```，然后每次抓取成功以后，就 ```count++```如果你是要抓取三个源的数据，由于你根本不知道这些异步操作到底谁先完成，那么每次当抓取成功的时候，就判断一下 ```count === 3``` 当值为真时，使用另一个函数继续完成操作。</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">而 eventproxy 就起到了这个计数器的作用，它来帮你管理到底这些异步操作是否完成，完成之后，它会自动调用你提供的处理函数，并将抓取到的数据当参数传过来。</span><br><span class="line"></span><br><span class="line">假设我们不使用 eventproxy 也不使用计数器时，抓取三个源的写法是这样的：</span><br><span class="line"></span><br><span class="line">```bash</span><br><span class="line">// 参考 jquery 的 $.get 的方法</span><br><span class="line">$.get(&quot;http://data1_source&quot;, function (data1) &#123;</span><br><span class="line">  // something</span><br><span class="line">  $.get(&quot;http://data2_source&quot;, function (data2) &#123;</span><br><span class="line">    // something</span><br><span class="line">    $.get(&quot;http://data3_source&quot;, function (data3) &#123;</span><br><span class="line">      // something</span><br><span class="line">      var html = fuck(data1, data2, data3);</span><br><span class="line">      render(html);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
 <p>先获取 data1，获取完成之后获取 data2，然后再获取 data3，然后 fuck 它们，进行输出。</p>
 <p>这三个源的数据，是可以并行去获取的，data2 的获取并不依赖 data1 的完成，data3 同理也不依赖 data2。</p>
@@ -295,383 +292,59 @@
 <p>eventproxy 提供了不少其他场景所需的 API，但最最常用的用法就是以上的这种，即：</p>
 <p>先 <code>var ep = new eventproxy()</code>; 得到一个 eventproxy 实例。<br>告诉它你要监听哪些事件，并给它一个回调函数。<code>ep.all(&#39;event1&#39;, &#39;event2&#39;, function (result1, result2) {})</code>。<br>在适当的时候 <code>ep.emit(&#39;event_name&#39;, eventData)</code>。</p>
 
-          
-        
       
     </div>
     
     <div>
       
+        
+      
     </div>
 
     <div>
+      
+        
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/04/04/基于serializeArray的serializeObject/" itemprop="url">
-                  基于serializeArray的serializeObject
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-04T23:29:59+08:00" content="2016-04-04">
-              2016-04-04
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/node-js/" rel="tag">#node.js</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/04/基于serializeArray的serializeObject/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/04/基于serializeArray的serializeObject/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
+            <a href="/tags/转载/" rel="tag">#转载</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">jQuery.prototype.serializeObject=<span class="function"><span class="title">function</span></span>()&#123;  </span><br><span class="line">    var a,o,h,i,e;  </span><br><span class="line">    a=this.serializeArray();  </span><br><span class="line">    o=&#123;&#125;;  </span><br><span class="line">    h=o.hasOwnProperty;  </span><br><span class="line">    <span class="keyword">for</span>(i=0;i&lt;a.length;i++)&#123;  </span><br><span class="line">        e=a[i];  </span><br><span class="line">        <span class="keyword">if</span>(!h.call(o,e.name))&#123;  </span><br><span class="line">            o[e.name]=e.value;  </span><br><span class="line">        &#125;  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="built_in">return</span> o; </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/04/04/基于serializeArray的serializeObject/" rel="next" title="基于serializeArray的serializeObject">
+                <i class="fa fa-chevron-left"></i> 基于serializeArray的serializeObject
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/04/03/hexo搭建的坑/" itemprop="url">
-                  hexo搭建的坑
-                </a>
-              
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-04-03T15:46:18+08:00" content="2016-04-03">
-              2016-04-03
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/04/03/hexo搭建的坑/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/04/03/hexo搭建的坑/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h3 id="发布项目到github"><a href="#发布项目到github" class="headerlink" title="发布项目到github"></a>发布项目到github</h3><p>在_config.yml中修改为<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy: </span><br><span class="line">  <span class="built_in">type</span>: git</span><br><span class="line">  repo: git@github.com:nljshoxbb/nljshoxbb.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure></p>
-<p>在win操作系统用git shell打开<br>输入<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/03/27/新的开始/" itemprop="url">
-                  新的开始
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-03-27T15:29:02+08:00" content="2016-03-27">
-              2016-03-27
-            </time>
-          </span>
-
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/图/" itemprop="url" rel="index">
-                    <span itemprop="name">图</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/图/cat2/" itemprop="url" rel="index">
-                    <span itemprop="name">cat2</span>
-                  </a>
-                </span>
-
-                
-                
-                  ， 
-                
-
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/图/cat2/cat3/" itemprop="url" rel="index">
-                    <span itemprop="name">cat3</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/03/27/新的开始/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/03/27/新的开始/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="随便说说"><a href="#随便说说" class="headerlink" title="随便说说"></a>随便说说</h2><p><code>&lt;div style=&quot;color: red&quot;&gt;呵呵哒&lt;/div&gt;</code></p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-    
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -679,6 +352,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/04/12/eventproxy控制并发/"
+           data-title="eventproxy控制并发" data-url="http://yoursite.com/2016/04/12/eventproxy控制并发/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -698,8 +379,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/avatar.png"
@@ -751,6 +441,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#eventproxy控制并发"><span class="nav-number">1.</span> <span class="nav-text">eventproxy控制并发</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -847,6 +548,10 @@
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
